@@ -25,14 +25,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 public class CommonAPI {
-
     public static WebDriver driver;
     public static ExtentReports extent;
-    public static String sauceUserName = "";
-    public static String sauceKey = "";
+    public static String sauceUserName = "nusrat1995";
+    public static String sauceKey = "dbc7b863-b668-4d5e-ab39-34ab595b88ea";
     public static String browserStackUserName = "";
     public static String browserStackKey = "";
     public static String SAUCE_URL = "http://" + sauceUserName + ":" + sauceKey + "@ondemand.saucelabs.com:80/wd/hub";
@@ -50,31 +47,25 @@ public class CommonAPI {
         driver.get(url);
         return driver;
     }
-
     public static WebDriver getLocalDriver(String browser, String platform) {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("disable-infobars");
-
         if (platform.equalsIgnoreCase("windows") && browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver2.exe");
             driver = new ChromeDriver(chromeOptions);
         } else if (platform.equalsIgnoreCase("mac") && browser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver");
             driver = new ChromeDriver(chromeOptions);
         } else if (platform.equalsIgnoreCase("windows") && browser.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver2.exe");
             driver = new FirefoxDriver();
         } else if (platform.equalsIgnoreCase("mac") && browser.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver");
             driver = new FirefoxDriver();
         }
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
         return driver;
     }
-
     public static WebDriver getCloudDriver(String browser, String browserVersion, String platform,
                                            String envName) throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -93,7 +84,7 @@ public class CommonAPI {
         return driver;
     }
     public static void captureScreenshot(WebDriver driver, String screenshotName) {
-        DateFormat df = new SimpleDateFormat("(MM.dd.yyyy-HH:mma)");
+        DateFormat df = new SimpleDateFormat("(MM.dd.yyyy-HH.mm.ss)");
         Date date = new Date();
         df.format(date);
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -115,7 +106,6 @@ public class CommonAPI {
         ExtentTestManager.startTest(method.getName());
         ExtentTestManager.getTest().assignCategory(className);
     }
-
     protected String getStackTrace(Throwable t) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
@@ -130,7 +120,6 @@ public class CommonAPI {
         for (String group : result.getMethod().getGroups()) {
             ExtentTestManager.getTest().assignCategory(group);
         }
-
         if (result.getStatus() == 1) {
             ExtentTestManager.getTest().log(LogStatus.PASS, "Test Passed");
         } else if (result.getStatus() == 2) {
@@ -138,26 +127,21 @@ public class CommonAPI {
         } else if (result.getStatus() == 3) {
             ExtentTestManager.getTest().log(LogStatus.SKIP, "Test Skipped");
         }
-
         ExtentTestManager.endTest();
         extent.flush();
         if (result.getStatus() == ITestResult.FAILURE) {
             captureScreenshot(driver, result.getName());
         }
     }
-
     private Date getTime(long millis) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
-
     @AfterSuite
     public void generateReport() {
         extent.close();
     }
-    //reporting finish
-
     @AfterMethod
     public void cleanUp() {
         driver.close();
@@ -185,10 +169,16 @@ public class CommonAPI {
         driver.findElement(By.id(locator)).sendKeys(value);
     }
 
-    public String getValueByXpath(String locator) {
+    public String getTextByXpath(String locator) {
         return driver.findElement(By.xpath(locator)).getText();
     }
 
+   public void clickOnElementByClassName(String locator){
+       driver.findElement(By.className(locator)).click();
+   }
+   public void clickOnElementByCss(String locator){
+        driver.findElement(By.cssSelector(locator)).click();
+   }
     public boolean isElementDisplayed(String locator) {
         return driver.findElement(By.xpath(locator)).isDisplayed();
     }
@@ -200,7 +190,7 @@ public class CommonAPI {
     }
     public boolean isElementSelected(String locator) {
         boolean flag = true;
-        flag = driver.findElement(By.xpath(locator)).isSelected();
+        flag = driver.findElement(By.xpath(locator)).isEnabled();
         return flag;
     }
     public WebElement getElement(String locator) {

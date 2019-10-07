@@ -1,0 +1,18 @@
+package testClasses;
+
+import base.CommonAPI;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+import pages.PageFactoryOfHomePage;
+
+public class PageFactoryTestClassOfHomePage extends CommonAPI {
+    PageFactoryOfHomePage pageFactoryOfHomePage= PageFactory.initElements(driver,PageFactoryOfHomePage.class);
+    @Test
+    public void testOnMenuIcon(){
+        pageFactoryOfHomePage.validateMenuIcon();
+    }
+    @Test
+    public void testOnWorldButton(){
+        pageFactoryOfHomePage.validateWorldButton2();
+    }
+}
