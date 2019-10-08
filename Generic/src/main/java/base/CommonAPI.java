@@ -51,13 +51,13 @@ public class CommonAPI {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("disable-infobars");
         if (platform.equalsIgnoreCase("windows") && browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver2.exe");
+            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver.exe");
             driver = new ChromeDriver(chromeOptions);
         } else if (platform.equalsIgnoreCase("mac") && browser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver");
             driver = new ChromeDriver(chromeOptions);
         } else if (platform.equalsIgnoreCase("windows") && browser.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver2.exe");
+            System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver.exe");
             driver = new FirefoxDriver();
         } else if (platform.equalsIgnoreCase("mac") && browser.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver");
