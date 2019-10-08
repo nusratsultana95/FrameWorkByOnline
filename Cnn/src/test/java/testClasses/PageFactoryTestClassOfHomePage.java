@@ -24,4 +24,8 @@ public class PageFactoryTestClassOfHomePage extends CommonAPI {
     public void testOnStyleSection(){
         pageFactoryOfHomePage.validateStyleSection();
     }
+    @Test
+    public void testOnPoliticssection(){
+        pageFactoryOfHomePage.validatePolitics();
+    }
 }

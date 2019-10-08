@@ -14,6 +14,8 @@ public class PageFactoryOfHomePage extends CommonAPI {
     public static WebElement getWorldSection;
     @FindBy(xpath = "//li[@class='nav-linksstyles__SectionTitle-sc-1tike8v-3 hNYoQv']//a[@name='travel'][contains(text(),'Travel')]")
     public static  WebElement getStyleSection;
+    @FindBy(xpath = "//li[@class='nav-linksstyles__SectionTitle-sc-1tike8v-3 hNYoQv']//a[@name='politics'][contains(text(),'Politics')]")
+    public static WebElement getPoliticsSection;
     public void validateMenuIcon(){
         getmenuIcon.click();
     }
@@ -22,5 +24,8 @@ public class PageFactoryOfHomePage extends CommonAPI {
     }
     public void validateStyleSection(){
         getStyleSection.click();
+    }
+    public void validatePolitics(){
+        getPoliticsSection.click();
     }
 }
