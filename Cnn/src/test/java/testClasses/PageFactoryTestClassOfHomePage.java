@@ -20,4 +20,8 @@ public class PageFactoryTestClassOfHomePage extends CommonAPI {
     public void testOnWorldButton(){
         pageFactoryOfHomePage.validateWorldButton2();
     }
+    @Test
+    public void testOnStyleSection(){
+        pageFactoryOfHomePage.validateStyleSection();
+    }
 }
