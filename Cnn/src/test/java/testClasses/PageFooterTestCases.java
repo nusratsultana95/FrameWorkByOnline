@@ -29,7 +29,7 @@ public class PageFooterTestCases extends PageFooter {
         System.out.println(footerMenuList.size());
     }
     @Test
-    public void testOnPrivacypolicy(){
+    public void testOnPrivacyPolicy(){
         validatePrivacyPolicy();
     }
     @Test
@@ -39,5 +39,17 @@ public class PageFooterTestCases extends PageFooter {
     @Test
     public void testOnPageDocumentation(){
         validatePageDocumentation();
+    }
+    @Test
+    public void testOnFooterTurner(){
+        validateFooterTurner();
+    }
+    @Test
+    public void testOnLinkedText(){
+        validateLinkTextSports();
+    }
+    @Test
+    public void testOnFooterLinktext(){
+        validateLinkedtext();
     }
 }

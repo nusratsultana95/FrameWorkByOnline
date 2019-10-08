@@ -4,8 +4,13 @@ import base.CommonAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.util.List;
+
+/**
+ * this class is representing most of the elements from cnn.com page footer.I have created obj of HomePage class & brought
+ * a method from that class which is neccessary to get proper result of this class. And i have
+ * used List to store some of the elements.
+ */
 
 public class PageFooter extends CommonAPI {
     HomePage homePage=new HomePage();
@@ -43,6 +48,15 @@ public class PageFooter extends CommonAPI {
         WebElement elementOfFooterTurner=getElement("//a[@class='Text-sc-1amvtpj-0-a Link-sc-1hkqz5e-0 copyright__TBSLink-f3mp1a-1 iqIHwd']");
         Assert.assertEquals(elementOfFooterTurner.isDisplayed(),true);
         Assert.assertEquals(elementOfFooterTurner.isEnabled(),true);
-
+        elementOfFooterTurner.click();
+        driver.navigate().to("https://cnn.com");
+    }
+    public void validateLinkTextSports(){
+        driver.findElement(By.linkText("Sports")).click();
+        driver.navigate().to("https://cnn.com");
+    }
+    public void validateLinkedtext(){
+        WebElement elementOfFooterLinktext=getElement("//div[@class='Flex-sc-1sqrs56-0 footerstyles__SocialWrap-sc-1gdpf6x-2 bJEKPs']//span[@class='Text-sc-1amvtpj-0-span jKFEoX'][contains(text(),'Follow CNN')]");
+        Assert.assertEquals(elementOfFooterLinktext.isDisplayed(),true);
     }
 }
