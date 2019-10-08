@@ -25,11 +25,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class CommonAPI {
     public static WebDriver driver;
     public static ExtentReports extent;
-    public static String sauceUserName = "nusrat1995";
-    public static String sauceKey = "dbc7b863-b668-4d5e-ab39-34ab595b88ea";
+    public static String sauceUserName = "";
+    public static String sauceKey = "";
     public static String browserStackUserName = "";
     public static String browserStackKey = "";
     public static String SAUCE_URL = "http://" + sauceUserName + ":" + sauceKey + "@ondemand.saucelabs.com:80/wd/hub";
@@ -63,6 +65,8 @@ public class CommonAPI {
             System.setProperty("webdriver.gecko.driver", "../Generic/src/main/resources/geckodriver");
             driver = new FirefoxDriver();
         }
+        driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
         driver.manage().window().maximize();
         return driver;
     }
