@@ -54,7 +54,7 @@ public class CommonAPI {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("disable-infobars");
         if (platform.equalsIgnoreCase("windows") && browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver2.exe");
+            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver.exe");
             driver = new ChromeDriver(chromeOptions);
         } else if (platform.equalsIgnoreCase("mac") && browser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/chromedriver");
