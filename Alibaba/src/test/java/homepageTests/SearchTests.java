@@ -10,6 +10,11 @@ public class SearchTests extends Search {
         SearchFieldIsTypeAble();
     }
     @Test(enabled = false)
+    public void ValidateSearchButtonWorks(){
+        SearchFieldIsTypeAble();
+        SearchButtonWorks();
+    }
+    @Test(enabled = false)
     public void SignInByEmailAndPassword(){
         SigninWorks();
     }
@@ -35,5 +40,9 @@ public class SearchTests extends Search {
     @Test(enabled = false)
     public void ValidateAlibabaLogoVisible(){
         AlibabaLogoDisplay();
+    }
+    @Test
+    public void ValidateJoinFreeWorks(){
+        JoinFreeWorks();
     }
 }

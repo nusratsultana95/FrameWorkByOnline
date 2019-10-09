@@ -14,6 +14,8 @@
         <classes>
             <class name="homepageTests.SearchTests"/>
             <class name="homepageTests.CatagoriesTest"/>
+            <class name="homepageTests.HomepagePOMTest"/>
+            <class name="homepageTests.ServicesTest"/>
         </classes>
     </test>
 </suite>

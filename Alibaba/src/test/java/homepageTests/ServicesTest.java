@@ -1,17 +1,17 @@
 package homepageTests;
 
-import homepage.Catagories;
+import homepage.Services;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CatagoriesTest extends Catagories {
-    @Test(enabled = false)
-    public void ValidateCatagoriesField(){
-        CatagoriesFieldIsDisplayed();
+public class ServicesTest extends Services {
+    @Test
+    public void ValidateServicesField(){
+        ServicesFieldIsDisplayed();
     }
-    @Test(enabled = false)
+    @Test
     public void testAllDropDownMenu() {
         List<WebElement> elementList = getAllElementFromList();
         System.out.println(elementList.size());

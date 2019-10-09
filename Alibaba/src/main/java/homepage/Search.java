@@ -9,6 +9,9 @@ public class Search extends CommonAPI {
 //        clickOnElementByXpath("//div[@class='J-sc-hd-searchbar ui-searchbar ui2-searchbar ui-searchbar-size-middle ui-searchbar-primary ui-searchbar-mod-type ui-searchbar-img-search']//input[@placeholder='What are you looking for...'] ");
         typeOnElementByXpath("//div[@class='J-sc-hd-searchbar ui-searchbar ui2-searchbar ui-searchbar-size-middle ui-searchbar-primary ui-searchbar-mod-type ui-searchbar-img-search']//input[@placeholder='What are you looking for...'] ","laptop");
     }
+    public void SearchButtonWorks(){
+        clickOnElementByXpath("//div[@class='J-sc-hd-searchbar ui-searchbar ui2-searchbar ui-searchbar-size-middle ui-searchbar-primary ui-searchbar-mod-type ui-searchbar-img-search']//input[@class='ui-searchbar-submit']");
+    }
 
     public void SigninWorks(){
        Assert.assertEquals(isElementDisplayed(" //div[@class='sc-hd-ms-login']//a[contains(text(),'Sign In')]"),true);
@@ -37,6 +40,13 @@ public class Search extends CommonAPI {
     public void AlibabaLogoDisplay(){
         Assert.assertEquals(isElementDisplayed("//div[@class='sc-hd-cell sc-hd-hide-s sc-hd-m-logo']//a[@class='J-sc-hd-i-logo sc-hd-i-logo'][contains(text(),'Alibaba.com')]"),true);
        clickOnElementByXpath("//div[@class='sc-hd-cell sc-hd-hide-s sc-hd-m-logo']//a[@class='J-sc-hd-i-logo sc-hd-i-logo'][contains(text(),'Alibaba.com')]");
+
+    }
+    public void JoinFreeWorks(){
+        Assert.assertEquals(isElementDisplayed("//div[@class='sc-hd-ms-login']//a[contains(text(),'Join Free')]"),true);
+        clickOnElementByXpath("//div[@class='sc-hd-ms-login']//a[contains(text(),'Join Free')]");
+        typeOnElementById("J_Email","kanij1907@yahoo.com");
+        //Dragnddrop
 
     }
 }
