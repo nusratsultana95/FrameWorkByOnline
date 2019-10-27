@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
@@ -201,4 +202,24 @@ public class CommonAPI {
         WebElement element = driver.findElement(By.xpath(locator));
         return element;
     }
+
+    //create an WebElement method getElementByLinkText for using linkText.
+    public WebElement getElementByLinkText(String locator) {
+        WebElement element = driver.findElement(By.linkText(locator));
+        return element;
+    }
+
+    //create an WebElement method clickElementByLinkText for using linkText.
+    public WebElement clickOnElementByLinkText(String locator) {
+        WebElement element = driver.findElement(By.linkText(locator));
+        return element;
+    }
+
+    public void dragNdropByXpaths(String fromLocator, String toLocator){
+        Actions actions = new Actions(driver);
+        WebElement from = getElement(fromLocator);
+        WebElement to = getElement(toLocator);
+        actions.dragAndDrop(from,to).build().perform();
+    }
+
 }
